@@ -1,8 +1,8 @@
 # Making GIFs with Processing
 
-This is a set of Processing sketches to generate GIFs. I make a GIF with Processing maybe once every few months, so every time I come back it I have no idea what's going on. I've created a script and some template sketches to make this somewhat easier.
+This is a set of Processing sketches to generate GIFs. I make a GIF with Processing maybe once every few months, so every time I come back to it I have no idea what's going on. I've created a script and some template sketches to make this somewhat easier.
 
-The base template is modified from a [tutorial by Etienne Jacobs](https://necessarydisorder.wordpress.com/2018/07/02/getting-started-with-making-processing-gifs-and-using-the-beesandbombs-template/), which in turn is based on a [motion blur template](https://beesandbombs.tumblr.com/post/65346867831/motion-blur-for-processing) by beesandbombs (dave).
+The base template is modified from a [tutorial by Etienne Jacobs](https://necessarydisorder.wordpress.com/2018/07/02/getting-started-with-making-processing-gifs-and-using-the-beesandbombs-template/), which in turn is based on a [motion blur template by beesandbombs (dave)](https://beesandbombs.tumblr.com/post/65346867831/motion-blur-for-processing).
 
 ## Instructions for use
 
