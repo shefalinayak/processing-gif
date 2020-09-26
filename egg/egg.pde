@@ -60,7 +60,7 @@ void wobblyEgg(float t) {
 
 // assume t in range [0,1], t=0 and t=1 should be identical
 void draw_(float t) {
-  background(100,100,100);
+  background(230,230,230);
   noStroke();
 
   wobblyEgg(t);

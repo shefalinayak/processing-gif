@@ -37,7 +37,7 @@ ffmpeg -i egg/frames/fr%03d.png egg/output/new-egg.gif
 
 | Standard | Custom palette |
 |--|--|
-|![egg with dithering](examples/egg-dither.gif)|![egg with custom palette](examples/egg-custom-palette.gif)|
+|![egg with dithering](examples/egg-dither-light.gif)|![egg with custom palette](examples/egg-custom-light.gif)|
 
 ## Useful resources
 - [High quality GIF with FFmpeg](http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html)
