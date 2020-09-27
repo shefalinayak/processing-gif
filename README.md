@@ -41,3 +41,4 @@ ffmpeg -i egg/frames/fr%03d.png egg/output/new-egg.gif
 
 ## Useful resources
 - [High quality GIF with FFmpeg](http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html)
+- [Hexagonal Grids from Red Blob Games](https://www.redblobgames.com/grids/hexagons/)
