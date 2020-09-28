@@ -48,6 +48,7 @@ case $CMD in
         fi
         mkdir $SKETCH/frames
         mkdir $SKETCH/output
+        mkdir $SKETCH/tmp
         echo "Created new Processing sketch $SKETCH"
         tree $SKETCH
         ;;

@@ -96,7 +96,6 @@ class FractionalHex {
         return new Hex(qi, ri, si);
     }
 
-
     public FractionalHex hexLerp(FractionalHex b, float t) {
         return new FractionalHex(q * (1.0 - t) + b.q * t, r * (1.0 - t) + b.r * t, s * (1.0 - t) + b.s * t);
     }
