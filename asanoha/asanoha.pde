@@ -95,7 +95,7 @@ void draw_(float t) {
   strokeWeight(2);
 
   float step = map(cos(TWO_PI * t), -1, 1, 1, 0);
-  hexagons(step);
+  if (step > 0.03) hexagons(ease(step));
 }
 
 /*---------------------------------------------------------------------
