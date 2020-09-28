@@ -2,7 +2,10 @@
   Processing code by Shefali Nayak
 
   Template from Etienne Jacob & beesandbombs (dave)
-/*
+*/
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /*---------------------------------------------------------------------
   GIF parameters
@@ -19,6 +22,8 @@ int samplesPerFrame = 1;
   Project Code
 ---------------------------------------------------------------------*/
 
+PVector origin = new PVector(0,0);
+
 void setup() {
   if (args != null) {
     if (args[0].equals("-i"))
@@ -28,33 +33,69 @@ void setup() {
   }
 
   size(500, 500);
+  smooth(2);
 
   result = new int[width * height][3];
 }
 
-void hexagons(float t) {
-  PVector origin = new PVector(width/2, height/2);
-  PVector size = new PVector(50,50);
-  Layout layout = new Layout(POINTY, size, origin);
-
-  Hex hex0 = new Hex(0,0,0);
-  PVector pt0 = layout.hexToPixel(hex0);
-  circle(pt0.x, pt0.y, 30);
+ArrayList<PVector> hexMidpoints(Layout layout, Hex hex) {
+  ArrayList<PVector> corners = layout.polygonCorners(hex);
+  ArrayList<PVector> midpoints = new ArrayList<PVector>();
 
   for (int i = 0; i < 6; i++) {
-    Hex neightbor = hex0.neighbor(i);
-    PVector pt = layout.hexToPixel(neightbor);
-    circle(pt.x, pt.y, 15);
+    PVector v1 = corners.get(i);
+    PVector v2 = corners.get((i+1)%6);
+    midpoints.add(PVector.lerp(v1, v2, 0.5));
+  }
+
+  return midpoints;
+}
+
+void hexagons(float t) {
+  PVector origin = new PVector(width/2, height/2);
+  PVector size = new PVector(60,60);
+  Layout layout = new Layout(POINTY, size, origin);
+
+  int gridMin = -4;
+  int gridMax = 4;
+
+  for (int q = gridMin; q < gridMax; q++) {
+    for (int r = gridMin; r < gridMax; r++) {
+      for (int s = gridMin; s < gridMax; s++) {
+        if (q + r + s != 0) continue;
+
+        Hex hex = new Hex(q, r, s);
+        PVector center = layout.hexToPixel(hex);
+        ArrayList<PVector> corners = layout.polygonCorners(hex);
+        ArrayList<PVector> midpoints = hexMidpoints(layout, hex);
+
+        for (int i = 0; i < 6; i++) {
+          PVector corner = corners.get(i);
+          PVector midpoint = midpoints.get(i);
+
+          float step = map(t, 0, 0.5, 0, 1);
+          PVector pt = PVector.lerp(midpoint, center, step);
+          line(midpoint.x, midpoint.y, pt.x, pt.y);
+
+          if (t > 0.5) {
+            step = map(t, 0.5, 1, 0, 1);
+            pt = PVector.lerp(center, corner, step);
+            line(center.x, center.y, pt.x, pt.y);
+          }
+        }
+      }
+    }
   }
 }
 
 // assume t in range [0,1], t=0 and t=1 should be identical
 void draw_(float t) {
-  background(color(112,58,75));
-  fill(color(219,112,147));
-  noStroke();
+  background(#b0e0e6);
+  stroke(#f0ffff);
+  strokeWeight(2);
 
-  hexagons(t);
+  float step = map(cos(TWO_PI * t), -1, 1, 1, 0);
+  hexagons(step);
 }
 
 /*---------------------------------------------------------------------
